@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Archive</h1>
+  <h2>A simple list of all the posts on the blog.</h2>
+  <ul>
+    {% for n in arcList %}
+    <li><a href="{{ n[0:-5] }}">{{ n[0:-5] }}</a></li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}
