@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Fourier Series Explorer</h1>
+  
+  <p>The script can be found <a href="https://github.com/Mark-Platts/Fourier-Displayer/blob/main/Fourier.py" target="_blank">here</a>.</p>
+  
+  <h2>Explanation:</h2>
+  <p>I created this for one of my former students who needed to understand Fourier series fast. A Fourier series looks like this
+  </p>
+
+  <center><img src="../blog/static/images/FourierSeriesEqu.png" alt="Fourier series equation" style="width:60%; margin:20px 0;"></center>
+
+  <p>It is a set of sines and cosines, each multiplied by a coefficient that determines the strength of that term. 
+    T here is the difference between the starting and ending x values of the segment (see next paragraph).</p> <br>
+
+  <p>If you start with a segment of graph/function, you can use calculus to find the coefficients of the above series. If you then plot 
+    the series with those coefficients, you will see a graph with your starting segment repeated forever in both directions. 
+    The higher the order of the plotted sum (i.e. how big you let n be), the closer it will be to the original segment. Fourier series 
+    are very useful for modelling different shapes using functions which are mathematically easy to work with. A great example is in allowing 
+    electronics to model or approximate different wave structures for signal engineering or electronic sound creation.
+  </p>
+
+  <h2>What It Does:</h2>
+  <p>The Python script allows you to make your starting segment out of straight lines by inputting a list of the coordinates of each vertex in 
+    order from left to right. You can also choose four 'orders' to plot. The script will then return six graphs. The first is the original shape,
+   the second is a graph of the values of the Fourier series coefficients, and the other four are the plotted Fourier series at the four chosen 
+   orders. Please note that this kind of Fourier series can only work with true functions, so when you are creating the starting shape there can't be any 
+   overlap (i.e. an x can't map to two different y's). If you wish to use Fourier for more complited shapes, such as 2D shapes, <a href="https://markplatts.co.uk/blog/Parametric_Fourier_Explorer" target="_blank">see here</a>.</p>
+
+   <figure>
+    <img src="../blog/static/images/Fourier1.png" alt="Example of the outcome" style="width:100%; margin:20px 0;">
+    <center><figcaption>Example Outcome of the Script</figcaption></center>
+  </figure>
+
+   <h2>How it works:</h2>
+   <p>To run the script, your Python environment will need NumPy and MatPlotLib installed. Open the script in your preferred editor. 
+     The variable 'points' is where you put the coordinates for your shape (examples are provided). 'orders' is where you choose your four orders to plot. 
+     Once those two variables are set, you can run the script.
+   </p> <br>
+   <p>First the script checks the validity of the two inputted variables. It then grabs the needed mathematical information from the shape data
+     and begins calculating the Fourier series coefficients. Once the coefficients have been calculated, the script then plots a Fourier series 
+     with those coefficients at each of the chosen orders, as well as plotting the original shape and the coefficients themselves. Finally, these 
+     plots of collected together and returned, giving an outcome similar to the above image.
+   </p>
+
+{% endblock %}

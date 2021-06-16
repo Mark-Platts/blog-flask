@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Fourier Series Explorer</h1>
+  
+  <p>The script can be found <a href="https://github.com/Mark-Platts/Parametric-Fourier-Explorer/blob/main/Parametric%20Fourier.py" target="_blank">here</a>.</p>
+  <p>Please note: This project was very a sequal to my original <a href="https://markplatts.co.uk/blog/Fourier_Series_Explorer" target="_blank">Fourier Series Explorer</a>. The information on this page will make a lot 
+    more sense if that page is viewed first.
+  </p>
+  
+  <h2>Explanation:</h2>
+  <p> After making my Fourier series explorer for a student. It got me thinking about where else I could apply the equations. 
+    I realised that any parametric equation that defines a closed loop must be periodic on the parameter variable. I played with the 
+    maths and found that a 2D parametric shape could be described by two Fourier series equations of the forms x(t), y(t) where t is the parameter.
+  </p> <br>
+
+  <p>The beauty of this is that, like for normal Fourier series, the 2D doesn't have to be smooth for the equations to accurately approximate 
+    the shape. This means that 2D shapes with vertices can be modelled with equations that are very friendly to analysis. Through playing around, 
+    I also notices that the approximations don't seem to suffer from the Gibbs phenomenon that plague the normal use of Fourier series. 
+    Though, I'm not sure why this is off the top of my head!
+  </p> <br>
+
+  <figure>
+    <img src="../blog/static/images/PFourier1.png" alt="Hourglass Example" style="width:100%; margin:20px 0;">
+    <center><figcaption>Example Outcome: A Hourglass at different orders</figcaption></center>
+  </figure>
+
+  <figure>
+    <img src="../blog/static/images/PFourier2.png" alt="Generic Shape Example" style="width:100%; margin:20px 0;">
+    <center><figcaption>Test to see accuracy for a generic shape</figcaption></center>
+  </figure>
+
+  <figure>
+    <img src="../blog/static/images/PFourier3.png" alt="Hourglass Example" style="width:100%; margin:20px 0;">
+    <center><figcaption>Testing with a more complex shape</figcaption></center>
+  </figure>
+
+   <h2>How it works:</h2>
+   <p>The script logic works very similarly to the <a href="https://markplatts.co.uk/blog/Fourier_Series_Explorer" target="_blank">Fourier Series Explorer</a>. The only real difference is in the mathematics. The parametric 
+     data for each line is split into two functions x(t) and y(t). The Fourier series algorithm is then applied to both separately to make a
+      parametric Fourier series which is then plotted at each of the chosen orders.
+   </p>
+
+{% endblock %}
