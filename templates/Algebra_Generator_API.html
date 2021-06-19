@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Algebra Generator API</h1>
+
+  <p>To see an outcome for the API, go to <a href="https://markplatts.co.uk/equation-api/3" target="_blank">this link</a>. 
+  There are five levels to choose from. Change the number at the end of the link to 0-5 to select that level.</p>
+  
+  <p>The Python server script can be found <a href="https://github.com/Mark-Platts/Algebra-Generator/blob/main/equAPI.py" target="_blank">here</a>.</p>
+
+  <h2>Explanation:</h2>
+  <p>This project spawned from me wanting to experiment with RESTful API logic. I decided to use my 
+    <a href="https://markplatts.co.uk/blog/Algebra_Generator" target="_blank">algebra generator</a> as the product of the API. The API URLs can 
+    be used to fetch equations from the API as a JSON object.
+  </p>
+
+  <h2>What It Does:</h2>
+  <p>The user (or a fetch request code) creates the URL with the desired level of the equation as a query. The API then generates a set of equation 
+    data using the same code as my <a href="https://markplatts.co.uk/blog/Algebra_Generator" target="_blank">algebra generator</a>, before putting 
+    in a JSON object and returning it.
+  </p>
+
+   <figure>
+    <img src="../blog/static/images/CppAlgAPI1.png" alt="Example of the outcome" style="width:100%; margin:20px 0;">
+    <center><figcaption>Example outcome of directly using an API URL</figcaption></center>
+  </figure>
+
+    <h2>Final thoughts:</h2>
+    <p>This project isn't technically complete yet. I would like to eventually create an interface for it. 
+      The way the solution is written too works in a console but might need to be edited for browser display.
+       I would also like to experiment 
+      with rendering the outcome using some form of LaTeX renderer. I did however, learn exactly what I intended with this project. Namely, 
+      how to create a basic API that allows a server to return something from a Python script.
+    </p>
+
+
+{% endblock %}

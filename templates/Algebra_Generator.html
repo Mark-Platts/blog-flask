@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Algebra Generator</h1>
+  
+  <p>The Python version can be found <a href="https://github.com/Mark-Platts/Algebra-Generator/blob/main/Algebra.py" target="_blank">here</a>.</p>
+  <p>The C++ version can be found <a href="https://github.com/Mark-Platts/Algebra-Generator-Cpp/blob/main/Basic%20Algebra%20Generator/Basic%20Algebra%20Generator.cpp" target="_blank">here</a>.</p>
+  
+  <h2>Explanation:</h2>
+  <p>This idea spawned from some of my students needing a way to drill algebra questions quickly. I first made the Python version since I am faster 
+    in that language. Once the logic was all worked out, coded, and tested, I then rebuilt it in C++ so that my students could have a .exe file 
+    instead of needing to install Python themselves. A challenge of the code was writing a generating function that created equations that were suitable for 
+    the student's level. The equations only ever have whole numbers in them them and whole number answers. This required a lot of design in the 
+    generating function. I have also created a <a href="https://markplatts.co.uk/blog/Algebra_Generator_API" target="_blank">basic API</a> using this 
+    generator, allowing equations to be fetched by anyone.
+  </p>
+
+  <h2>What It Does:</h2>
+  <p>The program lets the user choose between levels 0-5. Once a level is chosen the program will offer to generate a random equation. 
+    The user can then try as many times as they like to give the correct answer, or they can choose to see the solution. For the latter, 
+    the program lists the step by step solution to the equation, ending with the answer. From there the user can generate a new equation 
+    or go back to the level select.
+  </p>
+
+   <figure>
+    <img src="../blog/static/images/CppAlg1.png" alt="Example of the outcome" style="width:100%; margin:20px 0;">
+    <center><figcaption>Step by step solution to an equation</figcaption></center>
+  </figure>
+
+   <h2>How it works:</h2>
+   <p>The main architecture of the program works with nested while loops. The outter loop asks for the desired level and checks the validity 
+     of the input. Once a level is successfully chosen, the program updates the level related variables and moves to the next loop which 
+     asks for the 'new equation' or 'go back' input. Asking for a new equation starts the final loop. This loop generates all of the information 
+     related to the equation (the equation itself, the answer, and a string with the whole step by step solution) and stores them. 
+     The loop then asks for an answer or 'show solution' input, checks validity, and then either tries again or displays the necessary output 
+     before moving back up a loop.</p><br>
+    <p>The equation generation is the most complicated part of the code. I wanted all numbers in the equation, and the solution, to be whole 
+      numbers. To achieve this, I first analysed the kinds of equation I was working with and worked out constraints for the equation parameters.
+      These constraints were then built directly into the generators for each part of the equations. For the higher level equations, there were 
+      also concerns for when certain parameters where allowed to be equal to 0 or 1 without breaking the equation. I partially solved this with 
+      more constraints but I also added a tester function that first tries to create an equation but rejects it if the numbers break the equation. 
+      This tester could then be looped until a suitable equation was found.
+    </p>
+
+    <h2>Final thoughts:</h2>
+    <p>In general, I am happy with this code and it certainly did the job it was designed for. Generating equations with the desired restrictions 
+      proved more complicated then I expected when I started out and I think I would like to design a better generator from scratch one day. 
+      I am not happy with the tester function (see above paragraph), as since its success is based on probability, it could theoretically 
+      loop infinitely (though I designed it such that this is extrordinarily unlikely). In order to not need such a function though, I would 
+      first have to do some study into the inner behaviour of the more complicated functions and find some more detailed constraints. Something I 
+      would like to try one day just as an exercise. 
+    </p>
+
+
+{% endblock %}
